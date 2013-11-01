@@ -62,14 +62,14 @@ $action = $_GET["action"];
 
 // SAVE DNSSPOOF HOSTS
 if ($newdata != "") { $newdata = ereg_replace(13,  "", $newdata);
-    $exec = "/bin/echo '$newdata' > /FruityWifi/conf/spoofhost.conf";
-	exec("/FruityWifi/www/bin/danger \"" . $exec . "\"", $output);
+    $exec = "/bin/echo '$newdata' > /usr/share/FruityWifi/conf/spoofhost.conf";
+	exec("/usr/share/FruityWifi/www/bin/danger \"" . $exec . "\"", $output);
 }
 
 // DELETE LOG
 if ($logfile != "" and $action == "delete") {
     $exec = "rm ".$mod_logs_history.$logfile.".log";
-    exec("/FruityWifi/www/bin/danger \"" . $exec . "\"", $dump);
+    exec("/usr/share/FruityWifi/www/bin/danger \"" . $exec . "\"", $dump);
 }
 
 ?>
