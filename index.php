@@ -108,9 +108,14 @@ if ($logfile != "" and $action == "delete") {
                 $filename = $mod_logs;
             }
 
+            /*
             $fh = fopen($filename, "r") or die("Could not open file.");
             $data = fread($fh, filesize($filename)) or die("Could not read file.");
             fclose($fh);
+            */
+            
+            $data = open_file($filename);
+            
             $data_array = explode("\n", $data);
             $data = implode("\n",array_reverse($data_array));
             
