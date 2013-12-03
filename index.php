@@ -62,14 +62,14 @@ $action = $_GET["action"];
 
 // SAVE DNSSPOOF HOSTS
 if ($newdata != "") { $newdata = ereg_replace(13,  "", $newdata);
-    $exec = "/bin/echo '$newdata' > /usr/share/FruityWifi/conf/spoofhost.conf";
-	exec("/usr/share/FruityWifi/www/bin/danger \"" . $exec . "\"", $output);
+    $exec = "$bin_echo '$newdata' > /usr/share/FruityWifi/conf/spoofhost.conf";
+	exec("$bin_danger \"$exec\"", $output);
 }
 
 // DELETE LOG
 if ($logfile != "" and $action == "delete") {
-    $exec = "rm ".$mod_logs_history.$logfile.".log";
-    exec("/usr/share/FruityWifi/www/bin/danger \"" . $exec . "\"", $dump);
+    $exec = "$bin_rm ".$mod_logs_history.$logfile.".log";
+    exec("$bin_danger \"$exec\"", $dump);
 }
 
 ?>
@@ -81,9 +81,9 @@ if ($logfile != "" and $action == "delete") {
     <?
     $isurlsnarfup = exec("ps auxww | grep urlsnarf | grep -v -e grep");
     if ($isurlsnarfup != "") {
-        echo "&nbsp;URL Snarf  <font color=\"lime\"><b>enabled</b></font>.&nbsp; | <a href=\"../../scripts/status_urlsnarf.php?service=urlsnarf&action=stop&page=module\"><b>stop</b></a>";
+        echo "&nbsp;URL Snarf  <font color=\"lime\"><b>enabled</b></font>.&nbsp; | <a href='includes/module_action.php?service=urlsnarf&action=stop&page=module'><b>stop</b></a>";
     } else { 
-        echo "&nbsp;URL Snarf  <font color=\"red\"><b>disabled</b></font>. | <a href=\"../../scripts/status_urlsnarf.php?service=urlsnarf&action=start&page=module\"><b>start</b></a>";
+        echo "&nbsp;URL Snarf  <font color=\"red\"><b>disabled</b></font>. | <a href='includes/module_action.php?service=urlsnarf&action=start&page=module'><b>start</b></a>";
     }
 
     ?>
@@ -134,7 +134,7 @@ if ($logfile != "" and $action == "delete") {
 
         for ($i = 0; $i < count($logs); $i++) {
             $filename = str_replace(".log","",str_replace($mod_logs_history,"",$logs[$i]));
-            echo "<a href='?logfile=".str_replace(".log","",str_replace($mod_logs_history,"",$logs[$i]))."&action=delete'><b>x</b></a> ";
+            echo "<a href='?logfile=".str_replace(".log","",str_replace($mod_logs_history,"",$logs[$i]))."&action=delete&tab=1'><b>x</b></a> ";
             echo $filename . " | ";
             echo "<a href='?logfile=".str_replace(".log","",str_replace($mod_logs_history,"",$logs[$i]))."&action=view'><b>view</b></a>";
             echo "<br>";
@@ -143,6 +143,30 @@ if ($logfile != "" and $action == "delete") {
         
     </div>
 </div>
+
+<?
+if ($_GET["tab"] == 1) {
+	echo "<script>";
+	echo "$( '#result' ).tabs({ active: 1 });";
+	echo "</script>";
+} else if ($_GET["tab"] == 2) {
+	echo "<script>";
+	echo "$( '#result' ).tabs({ active: 2 });";
+	echo "</script>";
+} else if ($_GET["tab"] == 3) {
+	echo "<script>";
+	echo "$( '#result' ).tabs({ active: 3 });";
+	echo "</script>";
+} else if ($_GET["tab"] == 4) {
+	echo "<script>";
+	echo "$( '#result' ).tabs({ active: 4 });";
+	echo "</script>";
+} else if ($_GET["tab"] == 5) {
+	echo "<script>";
+	echo "$( '#result' ).tabs({ active: 5 });";
+	echo "</script>";
+}
+?>
 
 <div id="loading" class="ui-widget" style="width:100%;background-color:#000; padding-top:4px; padding-bottom:4px;color:#FFF">
     Loading...
