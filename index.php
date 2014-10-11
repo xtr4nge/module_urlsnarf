@@ -1,6 +1,6 @@
 <? 
 /*
-	Copyright (C) 2013  xtr4nge [_AT_] gmail.com
+	Copyright (C) 2013-2014  xtr4nge [_AT_] gmail.com
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -45,8 +45,8 @@ $(function() {
 <?
 
 include "_info_.php";
-
 include "../../config/config.php";
+include "../../login_check.php";
 include "../../functions.php";
 
 // Checking POST & GET variables...
@@ -96,6 +96,7 @@ if ($logfile != "" and $action == "delete") {
     <ul>
         <li><a href="#result-1">Output</a></li>
         <li><a href="#result-2">History</a></li>
+		<li><a href="#result-3">About</a></li>
     </ul>
     <div id="result-1" >
         <form id="formLogs" name="formLogs" method="POST" autocomplete="off">
@@ -124,7 +125,7 @@ if ($logfile != "" and $action == "delete") {
         <input type="hidden" name="type" value="logs">
         </form>
     </div>
-    <div id="result-2">
+    <div id="result-2" class="history">
         <input type="submit" value="refresh">
         <br><br>
         
@@ -142,6 +143,14 @@ if ($logfile != "" and $action == "delete") {
         ?>
         
     </div>
+	
+	<!-- ABOUT -->
+
+	<div id="result-3" class="history">
+		<? include "includes/about.php"; ?>
+	</div>
+	
+	<!-- END ABOUT -->
 </div>
 
 <?

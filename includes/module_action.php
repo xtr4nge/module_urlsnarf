@@ -27,7 +27,7 @@ if ($regex == 1) {
     regex_standard($_GET["service"], "../msg.php", $regex_extra);
     regex_standard($_GET["action"], "../msg.php", $regex_extra);
     regex_standard($_GET["page"], "../msg.php", $regex_extra);
-    regex_standard($iface_wifi, "../msg.php", $regex_extra);
+    regex_standard($io_action, "../msg.php", $regex_extra);
 }
 
 $service = $_GET['service'];
@@ -42,7 +42,7 @@ if($service == "urlsnarf") {
 
         $exec = "$bin_echo '' > $mod_logs";
         exec("$bin_danger \"$exec\"" );
-        $exec = "$bin_urlsnarf -i $iface_wifi >> $mod_logs &";
+        $exec = "$bin_urlsnarf -i $io_action >> $mod_logs &";
         exec("$bin_danger \"$exec\"" );
     } else if($action == "stop") {
         $exec = "$bin_killall urlsnarf";
