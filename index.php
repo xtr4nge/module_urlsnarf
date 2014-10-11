@@ -1,19 +1,19 @@
 <? 
 /*
-	Copyright (C) 2013-2014  xtr4nge [_AT_] gmail.com
+    Copyright (C) 2013-2014  xtr4nge [_AT_] gmail.com
 
-	This program is free software: you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
 
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
 
-	You should have received a copy of the GNU General Public License
-	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 ?>
 <!DOCTYPE HTML>
@@ -74,16 +74,16 @@ if ($logfile != "" and $action == "delete") {
 
 ?>
 
-<div class="rounded-top" align="left"> &nbsp; urlsnarf </div>
+<div class="rounded-top" align="left"> &nbsp; <?=$mod_alias?> </div>
 <div class="rounded-bottom">
     &nbsp;&nbsp;&nbsp;version <?=$mod_version?><br>
-    &nbsp;URL Snarf <font style="color:lime">installed</font><br>
+    &nbsp;&nbsp;<?=$mod_alias?> <font style="color:lime">installed</font><br>
     <?
     $isurlsnarfup = exec("ps auxww | grep urlsnarf | grep -v -e grep");
     if ($isurlsnarfup != "") {
-        echo "&nbsp;URL Snarf  <font color=\"lime\"><b>enabled</b></font>.&nbsp; | <a href='includes/module_action.php?service=urlsnarf&action=stop&page=module'><b>stop</b></a>";
+        echo "&nbsp;&nbsp;$mod_alias  <font color=\"lime\"><b>enabled</b></font>.&nbsp; | <a href='includes/module_action.php?service=urlsnarf&action=stop&page=module'><b>stop</b></a>";
     } else { 
-        echo "&nbsp;URL Snarf  <font color=\"red\"><b>disabled</b></font>. | <a href='includes/module_action.php?service=urlsnarf&action=start&page=module'><b>start</b></a>";
+        echo "&nbsp;&nbsp;$mod_alias  <font color=\"red\"><b>disabled</b></font>. | <a href='includes/module_action.php?service=urlsnarf&action=start&page=module'><b>start</b></a>";
     }
 
     ?>
