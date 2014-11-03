@@ -1,6 +1,6 @@
 <? 
 /*
-	Copyright (C) 2013  xtr4nge [_AT_] gmail.com
+	Copyright (C) 2013-2014 xtr4nge [_AT_] gmail.com
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -33,6 +33,7 @@ if ($regex == 1) {
 $service = $_GET['service'];
 $action = $_GET['action'];
 $page = $_GET['page'];
+$install = $_GET['install'];
 
 if($service == "urlsnarf") {
     if ($action == "start") {
@@ -48,6 +49,18 @@ if($service == "urlsnarf") {
         $exec = "$bin_killall urlsnarf";
         exec("$bin_danger \"$exec\"" );
     }
+}
+
+if ($install == "install_$mod_name") {
+
+    $exec = "chmod 755 install.sh";
+    exec("$bin_danger \"$exec\"" );
+
+    $exec = "$bin_sudo ./install.sh > /usr/share/FruityWifi/logs/install.txt &";
+    exec("$bin_danger \"$exec\"" );
+
+    header('Location: ../../install.php?module='.$mod_name);
+    exit;
 }
 
 if ($page == "status") {
