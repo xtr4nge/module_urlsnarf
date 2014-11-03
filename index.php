@@ -77,7 +77,15 @@ if ($logfile != "" and $action == "delete") {
 <div class="rounded-top" align="left"> &nbsp; <?=$mod_alias?> </div>
 <div class="rounded-bottom">
     &nbsp;&nbsp;&nbsp;version <?=$mod_version?><br>
-    &nbsp;&nbsp;<?=$mod_alias?> <font style="color:lime">installed</font><br>
+    
+    <? 
+    if (file_exists($bin_urlsnarf)) { 
+        echo "&nbsp;&nbsp;$mod_alias <font style='color:lime'>installed</font><br>";
+    } else {
+	echo "&nbsp;&nbsp;$mod_alias <a href='includes/module_action.php?install=install_$mod_name' style='color:red'>install</a><br>";
+    } 
+    ?>
+    
     <?
     $isurlsnarfup = exec("ps auxww | grep urlsnarf | grep -v -e grep");
     if ($isurlsnarfup != "") {
