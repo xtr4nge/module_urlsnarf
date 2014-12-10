@@ -1,6 +1,6 @@
 <? 
 /*
-    Copyright (C) 2013-2014  xtr4nge [_AT_] gmail.com
+    Copyright (C) 2013-2014 xtr4nge [_AT_] gmail.com
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -43,9 +43,8 @@ $(function() {
 <br>
 
 <?
-
-include "_info_.php";
 include "../../config/config.php";
+include "_info_.php";
 include "../../login_check.php";
 include "../../functions.php";
 
@@ -62,14 +61,16 @@ $action = $_GET["action"];
 
 // SAVE DNSSPOOF HOSTS
 if ($newdata != "") { $newdata = ereg_replace(13,  "", $newdata);
-    $exec = "$bin_echo '$newdata' > /usr/share/FruityWifi/conf/spoofhost.conf";
-	exec("$bin_danger \"$exec\"", $output);
+    $exec = "$bin_echo '$newdata' > /usr/share/fruitywifi/conf/spoofhost.conf";
+    //exec("$bin_danger \"$exec\"", $output); //DEPRECATED
+    exec_fruitywifi($exec);
 }
 
 // DELETE LOG
 if ($logfile != "" and $action == "delete") {
     $exec = "$bin_rm ".$mod_logs_history.$logfile.".log";
-    exec("$bin_danger \"$exec\"", $dump);
+    //exec("$bin_danger \"$exec\"", $dump); //DEPRECATED
+    exec_fruitywifi($exec);
 }
 
 ?>
@@ -163,25 +164,25 @@ if ($logfile != "" and $action == "delete") {
 
 <?
 if ($_GET["tab"] == 1) {
-	echo "<script>";
-	echo "$( '#result' ).tabs({ active: 1 });";
-	echo "</script>";
+    echo "<script>";
+    echo "$( '#result' ).tabs({ active: 1 });";
+    echo "</script>";
 } else if ($_GET["tab"] == 2) {
-	echo "<script>";
-	echo "$( '#result' ).tabs({ active: 2 });";
-	echo "</script>";
+    echo "<script>";
+    echo "$( '#result' ).tabs({ active: 2 });";
+    echo "</script>";
 } else if ($_GET["tab"] == 3) {
-	echo "<script>";
-	echo "$( '#result' ).tabs({ active: 3 });";
-	echo "</script>";
+    echo "<script>";
+    echo "$( '#result' ).tabs({ active: 3 });";
+    echo "</script>";
 } else if ($_GET["tab"] == 4) {
-	echo "<script>";
-	echo "$( '#result' ).tabs({ active: 4 });";
-	echo "</script>";
+    echo "<script>";
+    echo "$( '#result' ).tabs({ active: 4 });";
+    echo "</script>";
 } else if ($_GET["tab"] == 5) {
-	echo "<script>";
-	echo "$( '#result' ).tabs({ active: 5 });";
-	echo "</script>";
+    echo "<script>";
+    echo "$( '#result' ).tabs({ active: 5 });";
+    echo "</script>";
 }
 ?>
 
