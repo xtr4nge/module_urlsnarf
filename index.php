@@ -1,6 +1,6 @@
 <? 
 /*
-    Copyright (C) 2013-2014 xtr4nge [_AT_] gmail.com
+    Copyright (C) 2013-2016 xtr4nge [_AT_] gmail.com
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -60,16 +60,16 @@ $logfile = $_GET["logfile"];
 $action = $_GET["action"];
 
 // SAVE DNSSPOOF HOSTS
-if ($newdata != "") { $newdata = ereg_replace(13,  "", $newdata);
-    $exec = "$bin_echo '$newdata' > /usr/share/fruitywifi/conf/spoofhost.conf";
-    //exec("$bin_danger \"$exec\"", $output); //DEPRECATED
+if ($newdata != "") {
+	//$newdata = ereg_replace(13,  "", $newdata); // DEPRECATED
+    $newdata = preg_replace("/[\n\r]/",  "", $newdata);
+	$exec = "$bin_echo '$newdata' > /usr/share/fruitywifi/conf/spoofhost.conf";
     exec_fruitywifi($exec);
 }
 
 // DELETE LOG
 if ($logfile != "" and $action == "delete") {
     $exec = "$bin_rm ".$mod_logs_history.$logfile.".log";
-    //exec("$bin_danger \"$exec\"", $dump); //DEPRECATED
     exec_fruitywifi($exec);
 }
 

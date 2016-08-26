@@ -1,4 +1,9 @@
 module_urlsnarf
 ===============
 
-FruityWifi urlsnarf module
+FruityWiFi urlsnarf module
+
+
+v1.7
+---------------------------------
+- PHP7 compatibility issues has been fixed
